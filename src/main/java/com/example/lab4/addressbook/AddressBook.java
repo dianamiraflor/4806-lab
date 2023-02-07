@@ -22,6 +22,12 @@ public class AddressBook {
         buddies = new HashSet();
     }
 
+    public AddressBook(long id) {
+
+        buddies = new HashSet();
+        this.id = id;
+    }
+
     public void addBuddy(BuddyInfo Buddy) {
         if (Buddy != null) {
             buddies.add(Buddy);
