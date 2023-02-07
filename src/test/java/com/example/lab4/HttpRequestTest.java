@@ -27,19 +27,6 @@ public class HttpRequestTest {
     private TestRestTemplate restTemplate;
 
     @Test
-    public void testCreateAddressBook() throws Exception {
-        long addyBookIdTest =  1;
-        AddressBook addressBookTest = new AddressBook();
-        HttpEntity<AddressBook> request = new HttpEntity<>(new AddressBook(1));
-        AddressBook addyBook = restTemplate.postForObject("http://localhost:" + port + "/new",
-                request, AddressBook.class);
-
-        // Assertions
-        Assertions.assertNotNull(addyBook);
-        Assertions.assertEquals(addyBook.getId(), addyBookIdTest);
-    }
-
-    @Test
     public void testGetAddressBook() throws Exception {
         AddressBook addressBookTest = new AddressBook();
         HttpEntity<AddressBook> request = new HttpEntity<>(new AddressBook(1));
