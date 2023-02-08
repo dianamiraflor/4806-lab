@@ -27,12 +27,14 @@ public class HttpRequestTest {
     private TestRestTemplate restTemplate;
 
     @Test
-    public void testGetAddressBook() throws Exception {
-        AddressBook addressBookTest = new AddressBook();
+    public void testPostAndGetAddressBook() throws Exception {
+        long id_test = 1;
         HttpEntity<AddressBook> request = new HttpEntity<>(new AddressBook(1));
         AddressBook addyBook = restTemplate.postForObject("http://localhost:" + port + "/new",
                 request, AddressBook.class);
         // Retrieving POJO instead of JSON
+        Assertions.assertNotNull(addyBook);
+        Assertions.assertEquals(addyBook.getId(), id_test);
 
         // Returns HTTP status
         ResponseEntity<String> response = restTemplate.getForEntity("http://localhost:" + port + "/addressBook?id=1", String.class);
@@ -42,6 +44,8 @@ public class HttpRequestTest {
         JsonNode root = mapper.readTree(response.getBody());
         JsonNode name = root.path("name");
         Assertions.assertNotNull(name.asText());
+
+
     }
     // Test POST Buddy
     // Test GET Buddy
