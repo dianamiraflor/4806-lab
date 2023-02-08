@@ -27,7 +27,7 @@ public class HttpRequestTest {
     private TestRestTemplate restTemplate;
 
     @Test
-    public void testPostAndGetAddressBook() throws Exception {
+    public void testGetAndPostAddressBook() throws Exception {
         long id_test = 1;
         HttpEntity<AddressBook> request = new HttpEntity<>(new AddressBook(1));
         AddressBook addyBook = restTemplate.postForObject("http://localhost:" + port + "/new",
